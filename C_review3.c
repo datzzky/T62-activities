@@ -5,10 +5,10 @@ int main(){
 	int num;
 	printf("Enter a number: ");
 	scanf("%d", &num);
-	switch(num > 0)
+	switch(num > 0) //1 means true and zero means false
        {
 		case 0:
-			switch(num <0)
+			switch(num <0)//a nested switch is use to validate the value lessthan zero and print as negative int.
 			{
 				case 1:
 						printf("Negative Integer");
