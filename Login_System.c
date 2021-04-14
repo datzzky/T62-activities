@@ -1,4 +1,4 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 int pin, id_num, Num_of_users, i;
 // array of users
@@ -12,7 +12,7 @@ void pin_validate(int i, int pin);
 int main()
 {
 //calculating the actual size of rows
-	Num_of_users = sizeof(Users) / sizeof(Users[2]);
+	Num_of_users = sizeof(Users) / sizeof(Users[0]);
 
 	printf("Enter your id number: ");
 	scanf("%d", &id_num);
@@ -28,13 +28,17 @@ void validate_id(int id_num)
 		{
 			printf("Enter your pin: ");
 			scanf("%d", &pin);
-			pin_validate(i,pin);
+			pin_validate(i, pin);
 			break;
 		}
 		if(!(id_num == Users[i][0]))
 		{	if(i == Num_of_users - 1)
 			{
-				printf("id is not listed");
+				printf("ID is not listed\n");
+				printf("Enter your id number: ");
+				scanf("%d", &id_num);
+				validate_id(id_num);
+				break;
 			}
 		}
 	}
@@ -44,16 +48,16 @@ void pin_validate(int i, int pin)
 	system("cls");
 	if(pin == Users[i][1])
 	{
-		printf("You are now login");
+		printf("You are now login\n");
+	
+
 	}
-	else
+	if(!(pin == Users[i][1]))
 	{
-		while(!(pin == Users[i][1]))
-		{
-			printf("Incorect password re enter: ");
-			scanf("%d", &pin);
-			pin_validate(i, pin)
-		}
+		printf("Incorect pin re enter\n");
+		printf("Enter your pin: ");
+		scanf("%d", &pin);
+		pin_validate(i, pin);
 	}
 }
 /*
